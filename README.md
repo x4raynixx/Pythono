@@ -7,4 +7,15 @@ With **Pythono**, you can easily play old games used to play very long ago like 
 
 ---
 
+# Usage
+
+---
+
+How to use **Pythono**?
+Step 1: Open CMD (Command Prompt).
+Step 2: Execute command: "game <game_you_want_to_play>".
+Step 3 (Optional): Execute command "game list" to list all available games.
+
+---
+
 🤗 Have a great time playing with **Pythono**!
