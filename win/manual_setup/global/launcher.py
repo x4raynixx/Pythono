@@ -3,7 +3,6 @@ import subprocess
 import os
 import requests
 import importlib.util
-from colorama import Fore, Style
 
 def install_deps():
     for module in ['pygame', 'rerain', 'colorama']:
@@ -89,11 +88,14 @@ def download_file(url, save_path, fast_mode, messages):
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         with open(save_path, 'wb') as f:
             f.write(response.content)
+        from colorama import Fore, Style
         print(Fore.GREEN + f"{messages['file_saved']} {save_path}" + Style.RESET_ALL)
     except requests.exceptions.RequestException as e:
+        from colorama import Fore, Style
         print(Fore.RED + f"{messages['error_downloading']} {e}" + Style.RESET_ALL)
 
 def print_language_warning(messages):
+    from colorama import Fore, Style
     print(Fore.YELLOW + f"{messages['language_warning']}" + Style.RESET_ALL)
 
 def tic_tac_toe(fast_mode, lang):
@@ -104,6 +106,7 @@ def tic_tac_toe(fast_mode, lang):
     files_dir = os.path.join(game_dir, 'files', game_name)
 
     if not fast_mode:
+        from colorama import Fore, Style
         print(Fore.GREEN + messages["preparing"] + Style.RESET_ALL)
         print_language_warning(messages)
         download_file(f'{game_name}.py', os.path.join(game_dir, f'{game_name}.py'), fast_mode, messages)
@@ -121,6 +124,7 @@ def tic_tac_toe(fast_mode, lang):
         try:
             game_module.main()
         except Exception as e:
+            from colorama import Fore, Style
             print(Fore.RED + f"{messages['error_running']} {str(e)}" + Style.RESET_ALL)
 
 def main():
@@ -133,6 +137,7 @@ def main():
     messages = set_language(lang)
 
     if len(sys.argv) < 2:
+        from colorama import Fore, Style
         print(Fore.RED + messages["game_not_provided"] + Style.RESET_ALL)
         print(messages["usage"])
         sys.exit(1)
@@ -142,6 +147,7 @@ def main():
     if game_name == 'tic_tac_toe':
         tic_tac_toe(fast_mode, lang)
     else:
+        from colorama import Fore, Style
         print(Fore.RED + messages["game_unknown"] + Style.RESET_ALL)
 
 if __name__ == "__main__":
